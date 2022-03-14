@@ -17,6 +17,7 @@ const searchSongs = () => {
 const displaySongs = songs => {
     console.log(songs);
     const songContainer = document.getElementById('song-container');
+    songContainer.innerHTML = '';
     songs.forEach(song => {
         const songDiv = document.createElement('div');
         songDiv.className = 'single-result row align-items-center my-3 p-3';
@@ -42,10 +43,10 @@ const displaySongs = songs => {
 // Lyric
 const getLyric = (artist, title) => {
     const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
-    fetch(url)                                                              //const res = await fetch(url)
-        .then(res => res.json())                                             //const data = await res.json()
-        .then(data => displayLyrics(data.lyrics))                            //displayLyrics(data.lyrics)
-        .catch(error => displayError(new Error('Sorry! I Failed to load lyrics. Please try again letter.')))
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayLyrics(data.lyrics))
+        .catch(error => displayError('Sorry! I Failed to load lyrics. Please try again letter.'))
 }
 
 // display lyrics
